@@ -147,10 +147,6 @@ fbq('track', 'PageView');
           <!-- End Meta Pixel Code -->
         </script>
   <script>
-document.getElementById("joinBtn").addEventListener("click", function () {
-    fbq('track', 'subscribe');
-    fbq('track', 'CompleteRegistration');
-});
   </script>
         <noscript>
           <img height="1" width="1" style="display:none"
@@ -176,7 +172,7 @@ document.getElementById("joinBtn").addEventListener("click", function () {
                     ⏰ Offer Ends In :
                     <span id="countdown">05:00</span>
                   </div>
-                  <a class="telegram-btn" href="https://telegram.me/+QToHW_B7N8M4N2E1" target="_blank">
+                  <a id="telegram-btn" href="https://telegram.me/+QToHW_B7N8M4N2E1" target="_blank">
                     🚀 JOIN TELEGRAM CHANNEL
                   </a>
                   <div class="info">
@@ -205,10 +201,34 @@ time--;
 }
 },1000);
 
+<script>
+let time = 300;
 
-},5000);
+setInterval(function () {
+  let min = Math.floor(time / 60);
+  let sec = time % 60;
+
+  document.getElementById("countdown").innerHTML =
+    String(min).padStart(2, "0") + ":" +
+    String(sec).padStart(2, "0");
+
+  if (time > 0) {
+    time--;
+  }
+}, 1000);
+
 document.getElementById("telegramBtn").addEventListener("click", function () {
-  <script>
+
+  fbq('track', 'Lead', {
+    content_name: 'Telegram Join'
+  });
+
+  fbq('track', 'CompleteRegistration', {
+    content_name: 'Telegram Join'
+  });
+
+});
+<script>
 function trackLead() {
   fbq('track', 'Lead', {
     content_name: 'Telegram Join',
